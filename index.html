@@ -1203,7 +1203,7 @@ var supabaseClient = null;
 var currentUser = null;
 
 function initSupabase() {
-  if (!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_KEY.indexOf('COLE_AQUI') >= 0) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_KEY.indexOf('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4YWdweXdteXhybnV0YXBueGN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzOTgzMDMsImV4cCI6MjA4Nzk3NDMwM30.Ld5Lc-W-LsVdw7nbeYagldwN-_aaArJcmyDErUOQ768I') >= 0) {
     console.warn('Supabase não configurado — usando localStorage.');
     return false;
   }
