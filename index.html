@@ -42,30 +42,39 @@ body{font-family:'Outfit',sans-serif;background:var(--sand);color:var(--text);mi
 .mobile-tabs{display:none;background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;}
 .mobile-tab{flex:1;padding:13px;text-align:center;font-size:13px;font-weight:600;color:var(--text3);background:none;border:none;cursor:pointer;font-family:'Outfit',sans-serif;border-bottom:3px solid transparent;margin-bottom:-2px;}
 .mobile-tab.active{color:var(--lake);border-bottom-color:var(--lake);}
-
-/* ── RESPONSIVE ── */
-@media(max-width:860px){
-  .layout{grid-template-columns:1fr;min-height:auto;}
-  .form-panel{padding:16px 18px;}
-  .mobile-tabs{display:flex;}
+@media(max-width:960px){
+  .layout{grid-template-columns:1fr;}
   .pv-wrap{display:none;}
+  .mobile-tabs{display:flex;}
+}
+@media(max-width:860px){
+  #mobileBtns{display:flex!important;}
+  .form-panel{padding:14px 16px;}
   .pv-wrap.mobile-active{display:block;}
   .form-panel.mobile-hidden{display:none;}
-  .actions-bar{flex-wrap:wrap;gap:8px;padding:14px 18px;}
-  .btn-pdf,.btn-voucher{flex:1;min-width:140px;justify-content:center;}
-  .row.r2,.row.r3{flex-direction:column;gap:10px;}
+  .actions-bar{flex-wrap:wrap;gap:8px;padding:12px 16px;}
+  .btn-pdf,.btn-voucher{flex:1;min-width:130px;justify-content:center;font-size:12px;padding:9px 12px;}
+  .row.r2,.row.r3{flex-direction:column;gap:8px;}
   .passeios-grid{grid-template-columns:1fr 1fr;}
   .sec-title{font-size:13px;}
-  .db-panel{width:100vw;right:-100vw;}
+  .db-panel{width:95vw;right:-95vw;}
   #appTopbar{padding:8px 12px;}
   .topbar-name{font-size:14px;}
   #topbarUser{display:none;}
-  .header{display:none;}
+  .header{padding:10px 14px;}
+  .brand-logo,.brand-name,.brand-tag{display:none;}
+  .section{margin-bottom:20px;}
+  .field input,.field select,.field textarea{font-size:13px;padding:9px 11px;}
+  .passeio-card{padding:10px;}
+  .pname{font-size:13px;}
+  .psub{font-size:11px;}
 }
 @media(max-width:480px){
   .passeios-grid{grid-template-columns:1fr;}
-  .actions-bar{flex-direction:column;}
+  .actions-bar{flex-direction:column;gap:6px;}
   .btn-pdf,.btn-voucher{width:100%;}
+  .form-panel{padding:12px 14px;}
+  .tr-menu{max-width:90vw;}
 }
 
 /* SECTION */
@@ -323,6 +332,16 @@ body{font-family:'Outfit',sans-serif;background:var(--sand);color:var(--text);mi
   <button class="mobile-tab active" id="tabForm" onclick="switchTab('form')">✏️ Formulário</button>
   <button class="mobile-tab" id="tabPreview" onclick="switchTab('preview')">👁️ Preview</button>
 </div>
+<div id="mobileBtns" style="display:none;padding:12px 16px;background:#fff;border-bottom:1px solid var(--border);gap:8px;">
+  <button class="btn-voucher" onclick="gerarVoucher()" style="flex:1;justify-content:center;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+    Voucher
+  </button>
+  <button class="btn-pdf" onclick="gerarPDF()" style="flex:1;justify-content:center;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Roteiro PDF
+  </button>
+</div>
 <div class="layout">
 
 <!-- FORMULÁRIO -->
@@ -387,6 +406,9 @@ body{font-family:'Outfit',sans-serif;background:var(--sand);color:var(--text);mi
           <div class="tr-opt" onclick="addTr('SLZ → Santo Amaro · Van Compartilhada','R$ 200/pax','↓ Chegada')">SLZ → Santo Amaro · Van Compartilhada — R$ 200/pax</div>
           <div class="tr-opt" onclick="addTr('SLZ → Santo Amaro · Privativo Casal','R$ 800','↓ Chegada')">SLZ → Santo Amaro · Privativo Casal — R$ 800</div>
           <div class="tr-opt" onclick="addTr('SLZ → Santo Amaro · Privativo 4 Pax','R$ 1.000','↓ Chegada')">SLZ → Santo Amaro · Privativo 4 Pax — R$ 1.000</div>
+          <div class="tr-opt" onclick="addTr('Santo Amaro → SLZ · Van Compartilhada','R$ 200/pax','↑ Retorno')">Santo Amaro → SLZ · Van Compartilhada — R$ 200/pax</div>
+          <div class="tr-opt" onclick="addTr('Santo Amaro → SLZ · Privativo Casal','R$ 800','↑ Retorno')">Santo Amaro → SLZ · Privativo Casal — R$ 800</div>
+          <div class="tr-opt" onclick="addTr('Santo Amaro → SLZ · Privativo 4 Pax','R$ 1.000','↑ Retorno')">Santo Amaro → SLZ · Privativo 4 Pax — R$ 1.000</div>
           <div class="tr-opt" onclick="addTr('Santo Amaro → Barreirinhas · Privativo','R$ 500','↓ Chegada')">Santo Amaro → Barreirinhas · Privativo — R$ 500</div>
           <div class="tr-menu-cat">✏️ Personalizado</div>
           <div class="tr-opt" onclick="addTr('','','↓ Chegada',true)">+ Trecho personalizado (editar manualmente)</div>
@@ -1095,7 +1117,10 @@ function abrirDoc(modo) {
   var pending = imgs.length;
 
   function renderPDF() {
-    // Scroll to top
+    // Garantir que overlay está visível para captura
+    overlay.style.display = 'flex';
+    overlay.style.visibility = 'visible';
+    overlay.style.opacity = '1';
     overlay.scrollTop = 0;
     var captureEl = inner;
     html2canvas(captureEl, {
@@ -1203,7 +1228,7 @@ var supabaseClient = null;
 var currentUser = null;
 
 function initSupabase() {
-  if (!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_KEY.indexOf('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh4YWdweXdteXhybnV0YXBueGN3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIzOTgzMDMsImV4cCI6MjA4Nzk3NDMwM30.Ld5Lc-W-LsVdw7nbeYagldwN-_aaArJcmyDErUOQ768I') >= 0) {
+  if (!SUPABASE_URL || !SUPABASE_KEY || SUPABASE_KEY.indexOf('COLE_AQUI') >= 0) {
     console.warn('Supabase não configurado — usando localStorage.');
     return false;
   }
@@ -1622,20 +1647,23 @@ atualizarFab();
 
 
 function switchTab(tab) {
-  var form = document.getElementById('formPanel');
-  var pv   = document.getElementById('pvWrap');
+  var form  = document.getElementById('formPanel');
+  var pv    = document.getElementById('pvWrap');
   var tForm = document.getElementById('tabForm');
   var tPrev = document.getElementById('tabPreview');
+  var mBtns = document.getElementById('mobileBtns');
   if (tab === 'form') {
     form.classList.remove('mobile-hidden');
     pv.classList.remove('mobile-active');
     tForm.classList.add('active');
     tPrev.classList.remove('active');
+    if (mBtns) mBtns.style.display = 'flex';
   } else {
     form.classList.add('mobile-hidden');
     pv.classList.add('mobile-active');
     tForm.classList.remove('active');
     tPrev.classList.add('active');
+    if (mBtns) mBtns.style.display = 'none';
   }
 }
 
